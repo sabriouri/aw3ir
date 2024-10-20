@@ -14,10 +14,10 @@ var contactStore = (function () {
     // the implementation of the module within the function() block
 
     return {
-        add: function (_name, _firsname, _date, _adress, _mail) {
+        add: function (_name, _firstname, _date, _adress, _mail) {
             var contact = {
                 name: _name,
-                firstname: _firsname,
+                firstname: _firstname,
                 date: _date,
                 adress: _adress,
                 mail: _mail,
