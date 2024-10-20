@@ -5,21 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>TP4</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS boostrap -->
+    <link rel="stylesheet" href="css/bootstrap.css" />
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
+    <!-- librairie Javascript de boostrap pour pouvoir utiliser les composants interactifs (modal https://getbootstrap.com/docs/5.1/components/modal/ , collapse...) -->
+    <script src="js/bootstrap.bundle.js"></script>
 
-    <style>
-        body {
-            background-color: #e9ebee;
-            font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-            font-size: 16px;
-            margin: 0 auto;
-            max-width: 800px;
-        }
-    </style>
+    <script src="js/form-validation.js" defer></script>
+
+    <!-- Script de géolocalisation -->
+    <script src="js/gps.js" defer></script>
+
+    <script src="js/store.js" defer></script>
 
     <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
     <!--<link rel="stylesheet" href="style.css">-->
@@ -27,13 +24,120 @@
 </head>
 
 <body>
-    <nav>
-        <a href="..">🏠 Index</a> / TP4
-    </nav>
-    <h1>TP4</h1>
-    <!-- Add your site or application content here -->
-    <p>Hello world! This is HTML5 Boilerplate.</p>
-    <img src="../galilee.png" alt="Logo Galilee" />
+    <div class="container">
+        <h1>TP #4</h1>
+        <h2>Ajouter un contact</h2>
+        <form class="row g-3 needs-validation" novalidate>
+
+            <div class="col-md-8">
+                <label for="nom" class="form-label">Nom</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="nom" placeholder="Votre nom"
+                        oninput="calcNbChar(this.id)" required>
+                    <span class="p-2">0</span>
+                    <label class="p-2"> car.</label>
+                </div>
+                <div class="invalid-feedback">
+                    Veuillez entrer votre nom (min 5 caractères).
+                </div>
+            </div>
+
+
+            <div class="col-md-8">
+                <label for="prenom" class="form-label">Prénom</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="prenom" placeholder="Votre prénom"
+                        oninput="calcNbChar(this.id)" required>
+                    <span class="p-2">0</span>
+                    <label class="p-2"> car.</label>
+                </div>
+                <div class="invalid-feedback">
+                    Veuillez entrer votre prénom (min 5 caractères).
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <label for="email" class="form-label">Email</label>
+                <div class="input-group">
+                    <input type="email" class="form-control" id="email" placeholder="Votre adresse email"
+                        oninput="calcNbChar(this.id)" required>
+                    <span class="p-2">0</span>
+                    <label class="p-2"> car.</label>
+                </div>
+                <div class="invalid-feedback">
+                    Veuillez entrer une adresse email valide.
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <label for="dateNaissance" class="form-label">Date de naissance</label>
+                <div class="input-group">
+                    <input type="date" class="form-control" id="dateNaissance" oninput="calcNbChar(this.id)" required>
+                    <span class="p-2">0</span>
+                    <label class="p-2"> car.</label>
+                </div>
+                <div class="invalid-feedback">
+                    Veuillez entrer une date de naissance valide.
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <label for="adresse" class="form-label">Adresse</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="adresse" placeholder="Votre adresse"
+                        oninput="calcNbChar(this.id)" required>
+                    <span class="p-2">0</span>
+                    <label class="p-2"> car.</label>
+                    <div>
+                        <button type="button" id="gpsButton" class="btn btn-info">📍 GPS</button>
+                    </div>
+                </div>
+                <div class="invalid-feedback">
+                    Veuillez entrer votre adresse (min 5 caractères).
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div id="map" style="width:400px"></div>
+            </div>
+
+            <div class="col-md-8">
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+            </div>
+
+        </form>
+        <h2>Liste des contacts</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Date de naissance</th>
+                    <th>Adresse</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="contactListBody">
+            </tbody>
+        </table>
+    </div>
+
+    <!--<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBodyContent">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>-->
 </body>
 
 </html>
