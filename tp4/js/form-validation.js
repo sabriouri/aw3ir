@@ -1,8 +1,6 @@
 window.onload = function () {
     console.log("DOM ready!");
 
-    displayContactList();
-
     document.getElementById("gpsButton").addEventListener("click", function () {
         getLocation();
     });
@@ -62,6 +60,12 @@ window.onload = function () {
             return;
         }
 
+        const form = document.getElementById("contactForm");
+        form.addEventListener("submit", addContact);
+
+        const resetButton = document.getElementById("resetButton");
+        resetButton.addEventListener("click", resetContacts);
+
         /*var myModal = new bootstrap.Modal(document.getElementById("myModal"));
         const modalBody = document.getElementById("modalBodyContent");
         modalBody.innerHTML = `
@@ -72,6 +76,8 @@ window.onload = function () {
         `;
 
         myModal.show();*/});
+
+
 
 
 
@@ -119,3 +125,4 @@ function displayContactList() {
     <tr>`;
     }
 }
+
